@@ -1,0 +1,13 @@
+1. In your own words, how is terraform apply different from typing docker run?
+
+  docker run is a direct command that creates a container immediately with the options I provide. terraform apply uses Infrastructure as Code, where Terraform reads the configuration file, compares it with the current state, and creates or updates resources automatically to match the desired configuration.
+
+
+2. When you changed the port, why did Terraform update only the container and not rebuild the image?
+
+  Terraform knows that the image configuration did not change. The port mapping belongs to the container resource, so Terraform only replaced the container to apply the new port while keeping the existing image.
+
+
+3. What is the terraform.tfstate file, and why should you not edit it by hand?
+
+  The terraform.tfstate file stores Terraform's record of the resources it created and their current state. Terraform uses it to compare the configuration with the real infrastructure and decide what changes are needed. It should not be edited manually because incorrect changes can make Terraform lose track of resources or cause unexpected behavior.
